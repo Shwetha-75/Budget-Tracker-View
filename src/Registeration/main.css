@@ -1,0 +1,89 @@
+.input--tag{
+    background:transparent;
+    outline:none;
+    color:rgb(188, 235, 254);
+    font-family: "Titillium Web", serif;
+    font-size:0.8rem;
+    border: 2px solid rgba(78, 78, 80, 0.609);
+}
+
+.input--tag:focus{
+    transition: 1s;
+    outline:none;
+    background:transparent;
+    outline:none;
+    border: none;
+    color:rgb(188, 235, 254);
+}
+
+.btn{
+    background:transparent;
+    outline:none;
+    cursor: pointer;
+    border-radius: 10px;
+    color:rgb(188, 235, 254);
+    font-family: "Titillium Web", serif;
+    font-size:1rem;
+    border: 2px solid rgba(78, 78, 80, 0.609);
+}
+.btn:hover{
+    transition: 1s;
+    background:rgba(0, 0, 0, 0.199);
+    outline:none;
+    cursor: pointer;
+    color:rgb(255, 255, 255);
+    font-family: "Titillium Web", serif;
+    font-size:1rem;
+    border: 2px solid rgba(150, 150, 150, 0.609);
+}
+.input--outline--tag{
+    position: relative;
+   border:none;
+    width:90%;
+    margin-left: 5%;
+}
+.label--tag--gender{
+    padding:3%;
+    cursor: pointer;
+    
+}
+ .label--tag--gender:hover{
+    /* padding:3%;*/
+    background-color: rgb(16, 68, 113);
+    color:white;
+    border-radius: 10px;
+} 
+.input--outline--tag>label{
+    position: absolute;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background-color: transparent; 
+    color:rgb(188, 235, 254);
+    transition: all 0.3s ease; 
+    pointer-events: none; 
+    font-size: 0.9rem;
+}
+.input--outline--tag:hover > label {
+    transition: 1s;
+    top: -10px;
+    font-size: 0.8rem; 
+    border:none;
+    color:rgb(188, 235, 254);
+}
+.radio--tag{
+    opacity: 0;
+    width:0;
+}
+.activate{
+    background-color: rgb(16, 68, 113);
+    color:white;
+    cursor: pointer;
+    border-radius: 10px;
+    opacity: 1;
+  }
+  
+  .pwd--criteria--tag{
+    font-family: "Titillium Web", serif;
+    color:rgb(92, 187, 225);
+    font-size: 0.6rem;
+  }

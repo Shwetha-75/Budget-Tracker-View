@@ -1,0 +1,450 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgb(188, 235, 254);  
+    -webkit-box-shadow: 0 0 0 40px transparent inset !important;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+
+}
+ 
+html::-webkit-scrollbar-track {
+  background: black;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+html::-webkit-scrollbar-thumb {
+  backdrop-filter: blur(13px);
+  background: rgba(132, 128, 128, 0.571);
+  border:none;
+  border-radius: 100px;
+}
+
+
+body{
+  overflow-y: hidden;
+}
+html{
+    background-color: #021b4d;
+    background-image: linear-gradient(45deg, #03032b 0%, #050411 50%, #040718 100%);
+    
+
+    /* background: radial-gradient(circle, rgba(12,8,35,1) 0%, rgba(1,3,8,1) 100%); */
+    }
+
+    h1{
+        color:rgb(172, 232, 241)
+    }
+
+    .heading--login{
+        font-size:2rem;
+        font-weight: bolder;
+        color:rgb(88, 223, 238);
+        
+        font-family: "Titillium Web", serif;
+    }
+    .register-form{
+       
+        backdrop-filter: blur(50px);
+        background-color: #00000032;
+        overflow-y: scroll;
+    }
+.register-form::-webkit-scrollbar {
+        width: 2px;
+      }
+       
+    .register-form::-webkit-scrollbar-track {
+        background: black;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+       
+    .register-form::-webkit-scrollbar-thumb {
+        backdrop-filter: blur(13px);
+        background: rgb(88, 223, 238,0.5);
+        border:none;
+        border-radius: 100px;
+      }
+      
+.heading--tag--title{
+  font-family: "Titillium Web", serif;
+  font-size: 3.5rem;
+  text-align: center;
+  color:rgb(114, 231, 244);
+
+}
+
+.each--date--tag--week{
+  background-color:transparent;
+}
+
+.calender--date{
+  display:grid;
+  grid-template-columns: repeat(7,1fr);
+}
+.each--date--tag{
+  border:0.5px solid transparent;
+  background-color:rgba(4, 94, 129, 0);
+  border-left:0.5px solid rgba(167, 167, 167, 0.606);
+  border-right:0.5px solid rgba(167, 167, 167, 0.606);
+ 
+}
+.each--date--tag:hover{
+
+  transition:1s;
+    background-color:#021b4d7f;
+    border:0.5px solid rgba(65, 67, 68, 0.606);
+}
+
+.each--date--tag>p:hover{
+  transition: 1s;
+  color:white;
+}
+
+.add---expenses---tag{
+  cursor:pointer
+}
+
+.calender---tag{
+  position: relative;
+  margin-right:2%;
+}
+
+.overlay--background--tag{
+  position: absolute;
+  transition: 1s;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  top:0;
+  background-color: rgba(0, 0, 0, 0.057);
+  height:100%;
+
+  backdrop-filter: blur(15px);
+  z-index:999;
+}
+.overlay---tag{
+
+  position: absolute;
+  transition: 1s;
+  display:block;
+  width:100%;
+  top:5;
+  bottom:5;
+  left:5;
+  right:5;
+  background-color: rgba(0, 0, 0, 0.228);
+  height:100%;
+  backdrop-filter: blur(10px);
+  z-index:999;
+
+  
+}
+
+.weekdays--grid--display{
+  display:grid;
+  justify-content: space-around;
+  text-align: center;
+  grid-template-columns: repeat(7,1fr);
+}
+
+.dates--display--calender{
+  display:grid;
+  grid-template-columns: repeat(7,1fr);
+}
+
+.highlight---display--border{
+   border-radius:200px;
+   height:60px;
+   width:60px;
+   cursor: pointer;
+   justify-content: center;
+   border:none;
+}
+
+.parent-panel-calender{
+  width:100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height:300px;
+}
+.calender--display--tag{
+  width:60%;
+  margin-left: 20%;
+  height:300px;
+  color: white;
+}
+
+.highlight---display--border:hover{
+  outline:none;
+   z-index: 999;
+   background-color: rgba(128, 128, 128, 0.111);
+}
+.active{
+  background-color:rgba(11, 69, 92, 0.723);
+  border:none;
+  height:60px;
+  width:60px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.close--icon--tag{
+  cursor: pointer;
+  color:rgb(95, 95, 95);
+}
+
+.close--icon--tag:hover{
+  cursor: pointer;
+  transition:1s;
+  color:rgb(234, 233, 233);
+}
+
+@keyframes  fadeIn{
+   from{
+    opacity:0;
+    transform:scale(0.4); 
+   }
+   to{
+    opacity:1;
+    transform:scale(1);
+   }
+}
+
+.overlay---tag{
+  opacity:0;
+  transform:scale(0.8);
+  animation:fadeIn 0.7s ease-in-out forwards;
+  animation-delay:0.4s;
+}
+
+
+.option---selection--tag{
+  padding:10px;
+  /* background-color:rgba(0, 153, 255, 0.181); */
+  text-align: center;
+   align-items: center;
+   width:20%;
+   font-size: medium;
+   border-bottom:2px solid transparent;
+   color:rgb(183, 183, 183);
+   opacity:0;
+  transform:scale(0.8);
+  animation:fadeIn 0.7s ease-in-out forwards;
+  animation-delay:0.4s;
+   cursor:pointer;
+}
+.option---selection--tag:hover{
+  transition:1s;
+  transform:scale(0.8);
+  animation:fadeIn 0.7s ease-in-out forwards;
+  animation-delay:0.4s;
+  border:none;
+  border-bottom:2px solid rgba(88, 201, 242, 0.963); 
+  color:white;
+}
+
+.active--border{
+  transition:1s;
+  border:none;
+  border-bottom:2px solid rgba(88, 201, 242, 0.963); 
+  color:white;
+}
+
+@keyframes animationFade {
+  from{
+    opacity:0;
+    transform:translateX(-80px); 
+   }
+   to{
+    opacity:1;
+    transform:translateX(-10px);
+   }
+}
+
+.label---selected--tag{
+  opacity:0;
+  transform:translateX(-0.8);
+  animation:animationFade 0.3s ease-in-out forwards;
+  animation-delay:0.4s;
+}
+
+.poppup--calender--display{
+
+    width:100%;
+   display:grid;
+   height:100%;
+   overflow-y: auto;
+   grid-template-columns: repeat(7,1fr);
+   text-align: center;
+   justify-content: center;
+   align-items: center;
+   
+  }
+
+  .container--tag--calender{
+   height:50vh;
+    /* background-color: red; */
+    
+  }
+  .date--poppup--calender{
+    border-radius: 100px;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .date--poppup--calender:hover{
+  
+     border-radius: 100px;
+    background-color: rgba(128, 128, 128, 0.209);
+  }
+  .date--poppup--calender-active{
+    border:1px solid skyblue ;
+    border-radius: 100px;
+   background-color: rgba(128, 128, 128, 0.209);
+ }
+  .arrow-tag{
+    cursor:pointer;
+  }
+
+  .title---tag{
+    font-weight:bolder;
+    color:white;
+  }
+
+  .input--tag--expense{
+    background-color: transparent;
+    padding:3%;
+    font-size:20px;
+    width:100%;
+    border-bottom:2px solid gray;
+    outline:none;
+  }
+
+  .paragraph--weekdays--tag{
+    font-weight: bolder;
+  }
+
+  .deactivate---tag{
+    opacity:0.4;
+  }
+
+  .grid--month--display{
+    display: grid;
+     gap:0.6rem;
+    grid-template-columns: repeat(4,1fr);
+  }
+  .months--per--tag{
+    cursor:pointer;
+    border:1px solid  transparent;
+  }
+  .months--per--tag:hover{
+    transition:1s;
+    border:1px solid skyblue ;
+    background-color: rgba(128, 128, 128, 0.209);
+    
+  }
+
+  .months--per--tag--active{
+
+    border:1px solid skyblue;
+    background-color: rgba(128, 128, 128, 0.209);
+  }
+
+  .column--years--display{
+    display:grid;
+    gap:0.6rem;
+    grid-template-columns: repeat(3,1fr);
+
+  }
+
+  .populating--year{
+    cursor:pointer;
+    border:1px solid transparent;
+    background-color: transparent;
+  }
+  .populating--year--active{
+  
+    border:1px solid skyblue;
+    background-color: rgba(128, 128, 128, 0.209);
+  }
+  .populating--year:hover{
+    transition: 1s;
+    border:1px solid skyblue;
+    background-color: rgba(128, 128, 128, 0.209);
+  }
+
+  .label-tag--selected--dates{
+    justify-content: left !important;
+    width:100% !important;
+    font-size:15px;
+
+  }
+
+  .add--expense--tag{
+    font-size: 0.7rem;
+  }
+
+  .add--expense--tag--plus{
+     font-size:0.2rem;
+  }
+
+  .container--expense--tag{
+    position:fixed;
+    height:600px;
+      overflow-y:auto;
+  }
+  
+  .container-main{
+    overflow-y:hidden ;
+  }
+  .panel--tag{
+     height:700px;
+     overflow-y: auto;
+  }
+
+   .panel--tag::-webkit-scrollbar {
+    width: 6px;
+  
+  }
+   
+   .panel--tag::-webkit-scrollbar-track {
+    background: black;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   .panel--tag::-webkit-scrollbar-thumb {
+    backdrop-filter: blur(13px);
+    background: rgba(132, 128, 128, 0.571);
+    border:none;
+    border-radius: 100px;
+  }
+
+  .popp--display{
+
+    position:absolute;
+    backdrop-filter: blur(25px);
+     width:100%;
+     top:0;
+     margin-left:10%;
+     margin-right:10%;
+     height:100vh;
+    background-color: rgba(0, 0, 0, 0.023);
+    z-index:999;
+  }
+
