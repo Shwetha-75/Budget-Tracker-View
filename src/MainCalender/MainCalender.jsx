@@ -4,8 +4,8 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 // import AddIcon from '@mui/icons-material/Add';
 import {nanoid} from "nanoid";
 // import PopUpDisplay from './PopUpDisplay';
-import { ExpensesObject } from '../App';
-import { PopUpDisplayStatus } from '../App';
+import ExpensesObject from '../ContextAPI/ExpensesObject';
+import PopUpDisplayStatus from '../ContextAPI/PopUpDisplayStatus';
 import axios from "axios";
 
 export default function MainCalender() {

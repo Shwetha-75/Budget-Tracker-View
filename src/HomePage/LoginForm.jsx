@@ -1,14 +1,14 @@
 import React from 'react';
 import LoginFail from "../Component/LoginFail";
-import { UserStatus } from '../App';
+import UserStatus from '../ContextAPI/UserStatus';
 import UserNotExist from './UserNotExist';
 import { useNavigate,useLocation } from 'react-router-dom';
 import axios  from 'axios';
 import Registration from "../Registeration/Main";
 import "./login.css";
-import { UserObject } from '../App';
-import { UserDetails } from '../App';
-import { ExpensesObject } from '../App';
+import UserObject from '../ContextAPI/UserObject';
+import UserDetails from '../ContextAPI/UserDetails';
+import ExpensesObject from '../ContextAPI/ExpensesObject';
 export default function LoginForm() {
     const navigate =useNavigate();
     const location=useLocation();
