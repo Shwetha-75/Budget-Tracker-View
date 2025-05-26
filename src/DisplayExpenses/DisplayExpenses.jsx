@@ -1,9 +1,9 @@
 import React from 'react';
-import {ExpensesObject} from "../App";
+import ExpensesObject from "../ContextAPI/ExpensesObject";
 import axios from 'axios';
 import { MdDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md";
-import {UserObject} from "../App";
+import UserObject from "../ContextAPI/UserObject";
 
 // import { UserObject } from '../App';
 export default function DisplayExpenses() {

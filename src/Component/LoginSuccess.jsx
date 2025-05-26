@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserStatus } from '../App';
+import UserStatus from '../ContextAPI/UserStatus';
 import "./loginSuccess.css";
 import DisplayExpenses from '../DisplayExpenses/DisplayExpenses';
 import styled from 'styled-components';
@@ -10,10 +10,10 @@ import { useNavigate } from 'react-router-dom';
 import MainCalender from '../MainCalender/MainCalender';
 // import { ExpensesObject } from '../App';
 // import { UserDetails } from '../App';
-import { Salary } from '../App';
-import { UserObject } from '../App';
+import Salary  from '../ContextAPI/Salary';
+import UserObject  from '../ContextAPI/UserObject';
 import PopUpDisplay from '../MainCalender/PopUpDisplay';
-import { PopUpDisplayStatus } from '../App';
+import PopUpDisplayStatus  from '../ContextAPI/PopUpDisplayStatus';
 
 
 const Container=styled.div`

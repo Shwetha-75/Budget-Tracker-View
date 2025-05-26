@@ -5,9 +5,9 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import TitleControlledComponents from './TitleControlledComponents';
 import ControlledComponents from './ControlledComponents';
-import {ExpensesObject}  from '../App';
-import { PopUpDisplayStatus } from '../App';
-import { UserObject } from '../App';
+import ExpensesObject  from '../ContextAPI/ExpensesObject';
+import PopUpDisplayStatus from '../ContextAPI/PopUpDisplayStatus';
+import UserObject from '../ContextAPI/UserObject';
 import axios from "axios";
 // import excludeVariablesFromRoot from '@mui/material/styles/excludeVariablesFromRoot';
 
