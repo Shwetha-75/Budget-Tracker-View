@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from "./Main";
+// import Main from "./Main";
 import LoginSuccess from './Component/LoginSuccess';
 import{ BrowserRouter,Routes,Route} from "react-router-dom";
 import UserStatus from "./ContextAPI/UserStatus";
@@ -17,29 +17,14 @@ import UpdatedUserSavings from "./ContextAPI/UpdatedUserSavings"
 import CurrentEditableObject from "./ContextAPI/CurrentEditableObject"
 import EditableObjectStatus from "./ContextAPI/EditableObjectStatus"
 import CounterContext from "./ContextAPI/CounterContext"
-
-// export const UserStatus=React.createContext(null);
-// export const UserRegistrationStatus=React.createContext(null);
-// export const SelectedDatesCalendar=React.createContext(null);
-// export const CounterContext=React.createContext(0);
-// export const PopUpDisplayStatus=React.createContext(null);
-// export const InputTitleValue=React.createContext(null);
-// export const ExpenseValue=React.createContext(null);
-// export const FromToDatesSelected=React.createContext(null);
-// export const Expenses=React.createContext(null);
-// export const ExpensesObject=React.createContext({});
-// export const Counter=React.createContext(0);
-// export const UserDetails=React.createContext({});
-// export const UserObject=React.createContext({});
-// export const Salary=React.createContext('')
-// export const UpdatedUserSavings=React.createContext(null);
-// export const CurrentEditableObject=React.createContext(null);
-// export const EditableObjectStatus=React.createContext(null)
-
+import SalaryPoppUpDisplay from "./ContextAPI/SalaryPoppUpDisplay";
+// import { error } from 'jquery';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import UserLoginStatus from './ContextAPI/UserLoginStatus';
+import UserPayload from './ContextAPI/UserPayload';
 
 function App() {
   const [counter,setCounter]=React.useState(0);
-
   // userStatus lazy initialization 
   const [userStatus,setUserStatus]=React.useState(()=>{
 
@@ -53,33 +38,56 @@ function App() {
   const [expenseValue,setExpenseValue]=React.useState(0);
   const [expenses,setExpenses]=React.useState([]);
   const [fromToDatesSelected,setFromToDatesSelected]=React.useState([]);
+  const[userPayload,setUserPayload]=React.useState(()=>{
+    let temp=sessionStorage.getItem('userPayload');
+    return temp?JSON.parse(temp):{}
+  })
+  const [userLoginStatus,setUserLoginStatus]=React.useState(()=>{
+      let temp=sessionStorage.getItem('userLoginStatus');
+      return temp?JSON.parse(temp):false;
+  });
   const [expensesObject,setExpensesObject]=React.useState(()=>{
-       let temp=sessionStorage.getItem("expensesObject");
-        return temp ? JSON.parse(temp) : []
-      }
-    
-    );
+    try{
+ 
+      let temp=sessionStorage.getItem("expensesObject");
+       return temp ? JSON.parse(temp) : []
+    }catch(error){
+          return {}
+    }
+    });
   const [userObject,setUserObject]=React.useState(()=>{
-       let temp=sessionStorage.getItem('userObject');
-       return temp? JSON.parse(temp) : {}
+    try{
+      let temp=sessionStorage.getItem('userObject');
+      return temp? JSON.parse(temp) : {}
+    }catch(error){
+      return {}
+    }
    });
   const [userDetails,setUserDetails]=React.useState(()=>{
-    let temp=sessionStorage.getItem('userDetails');
-    return temp ? JSON.parse(temp) :{}
+    try{
+
+      let temp=sessionStorage.getItem('userDetails');
+      return temp ? JSON.parse(temp) :{}
+    }catch(error){
+        return {}
+    }
   });
   const [salary,setSalary]=React.useState(userObject?.salary);
   const [updatedUserSavings,setUpdatedUserSavings]=React.useState("");
   const [currentEditableObject,setCurrentEditableObject]=React.useState('')
   const [editableObjectStatus,setEditableObjectStatus]=React.useState('')
-
-
+  const [salaryPoppUpDisplay,setSalaryPoppUpDisplay]=React.useState(false);
+ 
  React.useEffect(()=>{
     sessionStorage.setItem('userObject',JSON.stringify(userObject));
     sessionStorage.setItem('userDetails',JSON.stringify(userDetails));
-    sessionStorage.setItem('expensesObject',JSON.stringify(expensesObject))
+    sessionStorage.setItem('expensesObject',JSON.stringify(expensesObject));
+    sessionStorage.setItem('userLoginStatus',JSON.stringify(userLoginStatus));
+    sessionStorage.setItem('userPayload',JSON.stringify(userPayload));
  })
 
   return (
+    <GoogleOAuthProvider clientId='582547398987-fp7v77v7kjpqenus3uorevkps29978j7.apps.googleusercontent.com'>
       <UserStatus.Provider value={{userStatus,setUserStatus,userRegistrationStatus,SetUserRegistrationStatus}} >
       <CounterContext.Provider value={{counter,setCounter}}>
       <SelectedDatesCalendar.Provider value={{selectedDatesCalendar,setSelectedDatesCalendar}}>
@@ -92,24 +100,28 @@ function App() {
       <UserDetails.Provider value={{userDetails,setUserDetails}}>
       <UserObject.Provider value={{userObject,setUserObject}}>
       <Salary.Provider value={{salary,setSalary}}>
+      <SalaryPoppUpDisplay.Provider value={{salaryPoppUpDisplay,setSalaryPoppUpDisplay}}>
       <UpdatedUserSavings.Provider value={{updatedUserSavings,setUpdatedUserSavings}}>
       <EditableObjectStatus.Provider value={{editableObjectStatus,setEditableObjectStatus}}>
       <CurrentEditableObject.Provider value={{currentEditableObject,setCurrentEditableObject}}>
-
+      <UserLoginStatus.Provider value={{userLoginStatus,setUserLoginStatus}}>
+      <UserPayload.Provider value={{userPayload,setUserPayload}}>
 
       <div className='h-[100vh]'>
         <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main/>}></Route>
-          <Route path="/login" element={<LoginSuccess/>}></Route>
+          {/* <Route path="/" element={<Main/>}></Route> */}
+          <Route path="/" element={<LoginSuccess/>}></Route>
         </Routes>
         </BrowserRouter>
       </div>
-
-
-     </CurrentEditableObject.Provider>
-     </EditableObjectStatus.Provider>
+      
+      </UserPayload.Provider>
+      </UserLoginStatus.Provider>
+      </CurrentEditableObject.Provider>
+      </EditableObjectStatus.Provider>
       </UpdatedUserSavings.Provider>
+      </SalaryPoppUpDisplay.Provider>
       </Salary.Provider>
       </UserObject.Provider>
       </UserDetails.Provider>
@@ -122,9 +134,7 @@ function App() {
       </SelectedDatesCalendar.Provider>
       </CounterContext.Provider>
       </UserStatus.Provider>
+      </GoogleOAuthProvider>
   );
 }
-
-
-
 export default App;
