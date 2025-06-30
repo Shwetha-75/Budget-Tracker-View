@@ -30,7 +30,7 @@ function SelectingDates(){
   const [addMoneyStatus,setAddMoneyStatus]=React.useState(true);
   const [editTitleStatus,setEditTitleStatus]=React.useState(false);
   const [costAmount,setCostAmount]=React.useState(0);
-  const {expenseObject,setExpensesObject}=React.useContext(ExpensesObject);
+  const {expensesObject,setExpensesObject}=React.useContext(ExpensesObject);
   const {setDisplayPopUp} = React.useContext(PopUpDisplayStatus);
   const daysInMonth=(year,month)=>new Date(year,month+1,0).getDate();
   const [selectedDates,setSelectedDates]=React.useState({0:1});
@@ -212,8 +212,8 @@ function SelectingDates(){
         time:new Date(),
         dates:mapData
       }
-      if(expenseObject){
-        console.log("Creating the Expense Object : ",expenseObject)
+      if(expensesObject){
+        console.log("Creating the Expense Object : ",expensesObject)
         setExpensesObject(prev=>([...prev,newExpenses])); 
       }
       else{
@@ -271,7 +271,8 @@ function SelectingDates(){
 
   },[selectedDates,expense]);
 
-
+  console.log(expensesObject);
+ 
   return (
     <>
     <Container className="container--tag--calender w-[90%] mt-[2%] ml-[5%] ">

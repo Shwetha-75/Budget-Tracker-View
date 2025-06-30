@@ -1,8 +1,10 @@
 import React from 'react';
 import UserStatus from '../ContextAPI/UserStatus';
 import "./loginSuccess.css";
+import UserProfile from "../UserProfile/UserProfile"
 import DisplayExpenses from '../DisplayExpenses/DisplayExpenses';
 import styled from 'styled-components';
+import UserLoginStatus from "../ContextAPI/UserLoginStatus";
 import axios from "axios";
 // import Expenses from './Expenses';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +16,7 @@ import Salary  from '../ContextAPI/Salary';
 import UserObject  from '../ContextAPI/UserObject';
 import PopUpDisplay from '../MainCalender/PopUpDisplay';
 import PopUpDisplayStatus  from '../ContextAPI/PopUpDisplayStatus';
+import SignIn from './SignIn';
 
 
 const Container=styled.div`
@@ -25,6 +28,9 @@ const Panel=styled.div`
   flex:2
 
 `
+const Item = styled.div`
+
+`
 
 const PanelCalender=styled.div`
     flex:5;
@@ -32,6 +38,7 @@ const PanelCalender=styled.div`
 export default function LoginSuccess() {
 
   const {displayPoppUp}=React.useContext(PopUpDisplayStatus);
+  const {userLoginStatus} = React.useContext(UserLoginStatus)
   const history=useNavigate();
 
   // const handleOnClickPopUp=()=>{
@@ -104,7 +111,6 @@ export default function LoginSuccess() {
 //  },[salary,expensesObject,userStatus,userObject,setUserObject]);
   
 
-
   const handleOnSaveSalary = async(event)=>{
     event.preventDefault();
     try{
@@ -127,22 +133,42 @@ export default function LoginSuccess() {
         salary:salary,
         savings:data.data_model.savings
       })
-      
-      
     }catch(error){
       console.log(error)
     }
 
   }
-   
+   console.log(userObject)
+
+  // const handleOnClickCheckData=async()=>{
+        
+  //       try{
+  //             const response = await axios.get("http://localhost:7000/check-user",{
+  //               headers:{
+  //              'Content-Type':'application/json',
+  //                'Authorization': JSON.parse(sessionStorage.getItem('token'))['random_token_id']
+  //          },
+  //                  withCredentials:true
+  //             })          
+  //         const result=response.data;
+        
+
+  //       }catch(error){
+  //           console.log(error)
+  //       }
+  // } 
+
  return (
 
     <Container className="">
-
-      <Panel  className='panel--tag'>
+      
+      <Panel  className=' panel--tag'>
 
       <div className='text-center text-sky-300 mt-4 '>Logged In Successfully !!
       <button onClick={handleOnClickLogout}>Logout</button>
+      {/* <button
+       onClick={handleOnClickCheckData}
+      >Check</button> */}
       <div className='w-[80%]  ml-[10%]  mt-[10vh]'>
         <div className=' mt-[5%]'>
 
@@ -220,11 +246,19 @@ export default function LoginSuccess() {
       </Panel>
       
       <PanelCalender className="relative w-100" >
+     { !userLoginStatus && <Item className='text-white p-6 text-right relative'>
+        <Item 
+        className='w-fit absolute right-5 cursor-pointer'>
+        
+              <SignIn/>
+          </Item>
+      </Item>}
+
         <MainCalender />
       </PanelCalender>
 
       {displayPoppUp && <PopUpDisplay />}
-
+        
    
          </Container>
   )
