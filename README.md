@@ -15,6 +15,7 @@
       <ul>
         <li>Design Pattern</li>
         <li>Backend architecture</li>
+        <li>Sequence Diagram </li>
       </ul>
     </li>
     <li>Project source code</li>
